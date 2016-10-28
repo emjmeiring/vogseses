@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 16:42:31 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 16:42:35 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 12:34:00 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 12:34:06 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	t_list	*tracker;
-	t_list	*tracked;
+	t_list	*lst;
+	t_list	*nxtlst;
 
-	if (alst == NULL)
-		return ;
-	tracked = *alst;
-	while (lst != NULL)
+	lst = *alst;
+	while (lst)
 	{
-		tracker = lst->next;
-		ft_lstdelone(&tracked, del);
-		tracked = tracker;
+		nxtlst = lst->next;
+		del(lst->content, lst->content_size);
+		free(lst);
+		lst = nxtlst;
 	}
 	*alst = NULL;
 }

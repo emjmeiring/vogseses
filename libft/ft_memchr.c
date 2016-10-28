@@ -5,25 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 15:19:26 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 17:06:54 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 12:42:04 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 12:42:07 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *str, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t			i;
-	unsigned char	*new_str;
+	unsigned int	i;
+	unsigned char	*p;
 
-	new_str = (unsigned char*)str;
 	i = 0;
-	while (i < n)
-	{
-		if (*((char*)(str + i)) == ((char)c))
-			return (new_str + i);
-		i++;
-	}
+	p = (unsigned char*)s;
+	if (s && n > 0)
+		while (i < n)
+		{
+			if (p[i] == (unsigned char)c)
+				return ((void*)(p + i));
+			i++;
+		}
 	return (NULL);
 }

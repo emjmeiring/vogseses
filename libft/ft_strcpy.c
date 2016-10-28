@@ -5,28 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 15:29:21 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 15:32:28 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 15:00:52 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:00:55 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dest, const char *src)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	int i;
+	size_t	length;
+	size_t	index;
 
-	i = 0;
-	if ((dest + strlen(dest)) < src || dest > (src + strlen(src)))
-	{
-		while (*(src + i))
-		{
-			*(dest + i) = *(src + i);
-			i++;
-		}
-		*(dest + i) = '\0';
-	}
-	else
-		return ("Strings are overlapping");
-	return (dest);
+	length = ft_strlen(src);
+	index = -1;
+	while (++index <= length && src[index] != '\0')
+		*(dst + index) = *(src + index)
+				;
+	dst[index] = '\0';
+	return (dst);
 }

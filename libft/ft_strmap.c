@@ -5,25 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 15:53:31 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 15:53:39 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 15:11:45 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:11:47 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(const char *s, void (*f)(char))
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	char	*str;
 	int		i;
+	int		j;
+	char	*nstr;
 
-	i = 0;
-	str = ft_strnew(ft_strlen(s));
-	ft_strcpy(str, s);
-	while (*(str + i))
+	i = -1;
+	if (s && f)
 	{
-		(*f)(*(str + i));
-		i++;
+		j = ft_strlen((char*)s);
+		nstr = (char*)malloc(j * sizeof(char));
+		while (*(s + ++i) != '\0')
+			nstr[i] = f(*(s + i));
+		return (nstr);
 	}
-	return (str);
+	return (NULL);
 }

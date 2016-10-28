@@ -5,20 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/11 13:02:49 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 17:03:51 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 15:04:02 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:04:10 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *str)
+char	*ft_strdup(const char *s1)
 {
-	char	*new_str;
+	char	*c;
+	int		len;
 
-	new_str = (char*)malloc(sizeof(str) + 1);
-	if (new_str == NULL)
-		return (NULL);
-	ft_strcpy(new_str, str);
-	return (new_str);
+	len = -1;
+	while (s1[++len])
+		;
+	c = (char *)malloc(len * sizeof(char) + 1);
+	if (c != NULL)
+		ft_strcpy(c, s1);
+	*(c + len) = '\0';
+	return (c);
 }

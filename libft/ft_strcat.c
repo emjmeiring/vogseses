@@ -5,24 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 15:38:45 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 15:40:31 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 14:45:30 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 14:45:36 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *dest, const char *src)
+char	*ft_strcat(char *s1, const char *s2)
 {
 	int		i;
-	size_t	size;
+	int		j;
 
-	size = ft_strlen(dest);
-	i = -1;
-	while (*(src + (++i)))
+	j = 0;
+	i = ft_strlen(s1);
+	while ((s1[i] = s2[j]))
 	{
-		*(dest + size + i - 1) = *(src + i);
+		j++;
+		i++;
 	}
-	*(dest + size + i) = '\0';
-	return (dest);
+	s1[i] = '\0';
+	return (s1);
 }

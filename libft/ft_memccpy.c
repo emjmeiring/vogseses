@@ -5,26 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 15:22:02 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 15:24:11 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 12:41:43 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 12:41:46 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include <string.h>
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	if ((&(((char*)src)[0]) >= &(((char*)dest)[0]) && (&(((char*)dest)[0]) <=
-					(&(((char*)src)[n])))))
-		return ("The fuck, dude?");
-	else
+	size_t	i;
+
+	i = 0;
+	if (dst && src && c && n)
 	{
-		while (n--)
+		while (i < n)
 		{
-			if (*((char*)(src)) == c)
-				return (dest + 1);
-			*((char*)(dest++)) = *((char*)(src++));
+			*((char *)dst + i) = *((char *)src + i);
+			if (*((char *)src + i) == (char)c)
+			{
+				return ((char *)dst + i + 1);
+			}
+			i++;
 		}
-		return (NULL);
 	}
+	return (NULL);
 }

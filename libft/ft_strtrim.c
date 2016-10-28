@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 16:54:39 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 16:54:42 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 15:23:37 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:24:46 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,29 @@
 
 char	*ft_strtrim(char const *s)
 {
-	char	*s2;
-	int		i;
+	size_t	len;
+	size_t	fin;
+	size_t	debut;
+	size_t	cpt;
+	char	*news;
 
-	i = 0;
+	fin = 0;
+	debut = 0;
+	cpt = -1;
 	if (s == NULL)
 		return (NULL);
-	while (*s == '\n' || *s == '\r' || *s == ' ')
-		s++;
-	if (s == '\0')
-		return (ft_strnew(0));
-	s2 = s + (ft_strlen(s) - 1);
-	while (*s2 == '\n' || *s == '\r' || *s == ' ')
-		s2--;
-	return (ft_substr(s, 0, (s2 - s) + 1));
+	len = ft_strlen(s);
+	while (*(s + (--len)) == ' ' || *(s + len) == '\n' || *(s + len) == '\t')
+		fin++;
+	len = -1;
+	while (*(s + (++len)) == ' ' || *(s + len) == '\n' || *(s + len) == '\t')
+		debut++;
+	len = ft_strlen(s) - (debut + fin);
+	news = malloc(sizeof(char) * (len + 1));
+	if (news == NULL)
+		return (NULL);
+	while (++cpt < len)
+		*(news + cpt) = *(s + (cpt + debut));
+	*(news + cpt) = '\0';
+	return (news);
 }

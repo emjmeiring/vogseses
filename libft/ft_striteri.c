@@ -5,19 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 16:20:24 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 16:21:32 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 15:08:07 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:08:10 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	unsigned int	i;
+	size_t	i;
 
-	i = 0;
-	while (*(s + i))
+	if (s && f)
 	{
-		(*f)(i, (s + i));
-		i++;
+		i = -1;
+		while (*(s + (++i)) != '\0')
+			f(i, (s + i));
 	}
 }

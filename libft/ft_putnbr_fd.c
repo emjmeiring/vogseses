@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 16:55:26 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 16:56:26 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 13:00:08 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 13:00:10 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,26 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	uintmax_t	max;
-	int			sign;
+	int		i;
+	int		a[10];
 
-	sign = -1;
-	max = n;
+	i = 0;
 	if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
-		max = sign * n;
+		n = -n;
 	}
-	if (max >= 10)
+	if (!n)
+		ft_putchar_fd('0', fd);
+	while (n)
 	{
-		ft_putnbr_fd(max / 10, fd);
-		ft_putnbr_fd(max % 10, fd);
+		*(a + i) = n % 10;
+		n /= 10;
+		i++;
 	}
-	else
-		ft_putchar_fd(max + '0', fd);
+	while (i > 0)
+	{
+		i--;
+		ft_putchar_fd(*(a + i) + 48, fd);
+	}
 }

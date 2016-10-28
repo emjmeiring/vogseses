@@ -5,19 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 14:58:49 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 15:00:26 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 12:41:26 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 12:41:28 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t s)
+void	*ft_memalloc(size_t size)
 {
-	void	*new_mem;
+	void	*mem;
+	size_t	i;
 
-	new_mem = malloc(s);
-	if (!new_mem)
+	i = -1;
+	mem = malloc(sizeof(size_t) * size);
+	if (!mem)
 		return (NULL);
-	return (ft_memset(new_mem, 0, s));
+	while (++i < size)
+		*((unsigned char *)mem + i) = '\0';
+	return (mem);
 }

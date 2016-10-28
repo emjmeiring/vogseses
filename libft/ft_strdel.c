@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 15:33:03 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 15:33:17 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 15:01:09 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:01:11 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_strdel(char **as)
 {
-	free(*as);
-	*as = NULL;
+	if (as != NULL)
+	{
+		free(*as);
+		*as = NULL;
+	}
 }

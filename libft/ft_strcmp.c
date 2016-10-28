@@ -5,32 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/11 13:05:40 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 15:36:29 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 14:57:59 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 14:58:04 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		ft_strcmp(char *str1, char *str2)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	int i;
-	int s1;
-	int s2;
-
-	i = 0;
-	s1 = 0;
-	s2 = 0;
-	while (*(str1 + i))
+	while (*s1 && *s2 && *s1 == *s2)
 	{
-		s1 = s1 + *(str1 + i);
-		i++;
+		s1++;
+		s2++;
 	}
-	i = 0;
-	while (*(str2 + i))
-	{
-		s2 = s2 + *(str2 + i);
-		i++;
-	}
-	return (s1 - s2);
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }

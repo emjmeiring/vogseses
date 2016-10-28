@@ -5,19 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/11 13:03:25 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 16:00:40 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 15:13:18 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:13:20 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, const char *src, int n)
-{
-	int	i;
+#include "libft.h"
 
-	i = -1;
-	while (*(src + (++i)) && i < n)
+char	*ft_strncpy(char *dst, const char *src, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n && *(src + i))
 	{
-		*(dest + i) = *(src + (i));
+		*(dst + i) = *(src + i);
+		++i;
 	}
-	return (dest);
+	while (i < n)
+		*(dst + (i++)) = '\0';
+	return (dst);
 }

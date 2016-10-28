@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 16:50:58 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 16:51:01 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 14:27:54 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 14:27:58 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_putstr_fd(char const *s, int fd)
 {
-	if ((fd > 0 && fd <= 2) && s != NULL)
-		write(fd, s, ft_strlen(s));
+	while (*s)
+		write(fd, s++, 1);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 16:41:39 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 16:41:42 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 12:33:17 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:43:16 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
-	if (new)
-	{
-		if (!(*alst))
-			*alst = new;
+	if (!(*alst) || new || alst)
 		new->next = *alst;
-		*alst = new;
-	}
+	*alst = new;
 }

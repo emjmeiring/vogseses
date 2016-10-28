@@ -5,19 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 14:50:31 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 14:52:56 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 12:18:54 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 12:18:58 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_bzero(void *str, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-	unsigned long int i;
+	size_t	i;
 
 	i = -1;
-	while ((++i) < n)
-		*((char*)(str + i)) = '\0';
-	return (str);
+	while (++i < n)
+		*((unsigned char *)s + i) = 0;
 }

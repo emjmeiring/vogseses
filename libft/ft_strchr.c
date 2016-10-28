@@ -5,20 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 15:36:56 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 15:37:37 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 14:47:53 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 14:48:06 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(char *str, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	int		i;
 
-	i = -1;
-	while (*(str + (++i)) && *(str + i) != c)
-	{
-	}
-	return (str + i);
+	i = 0;
+	while (s[i] != '\0' && s[i] != (char)c)
+		i++;
+	if (s[i] == (char)c)
+		return ((char*)&s[i]);
+	return (NULL);
 }

@@ -5,12 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 14:55:22 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 14:57:31 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 12:26:44 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 12:26:47 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isascii(char c)
+int		ft_isascii(int c)
 {
-	return (!(c <= 0 && c >= 127));
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }

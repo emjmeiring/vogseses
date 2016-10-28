@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 16:45:08 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 16:45:11 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 12:52:45 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 12:52:48 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 void	ft_putchar(char c)
 {
-	write(1, c, 1);
+	write(1, &c, 1);
 }

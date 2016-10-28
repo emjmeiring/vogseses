@@ -5,17 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 16:06:04 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 16:06:51 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 15:44:35 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:44:37 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t s)
+char	*ft_strnew(size_t size)
 {
-	char	*str;
+	char	*new;
+	size_t	i;
 
-	str = ft_memset(ft_memalloc(sizeof(str) * s + 1), 0, s);
-	return (str);
+	i = -1;
+	new = malloc(sizeof(char) * size);
+	if (!new)
+		return (NULL);
+	while (++i < size)
+		*(new + i) = '\0';
+	return (new);
 }

@@ -5,22 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/11 13:06:13 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 14:49:34 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 12:17:23 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 12:19:49 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		atoi(const char *str)
-{
-	int		i;
-	int		total;
+#include "libft.h"
 
-	i = 0;
-	total = 0;
-	while (*(str + i))
+int		ft_atoi(const char *str)
+{
+	int		sign;
+	int		result;
+
+	result = 0;
+	sign = 1;
+	while (*str == ' ' || *str == '\n' || *str == '\v' || *str == '\t' ||
+			*str == '\r' || *str == '\f')
+		str++;
+	if (*str == '-')
 	{
-		total = total * 10 + (*(str + i) - 48);
-		i++;
+		sign = -1;
+		str++;
 	}
-	return (total);
+	else if (*str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10;
+		result = result + (*str - '0');
+		++str;
+	}
+	return (result * sign);
 }

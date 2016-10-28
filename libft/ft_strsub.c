@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 16:52:39 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 16:54:18 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 15:23:15 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:23:22 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*new_str;
-	int		i;
+	char	*news;
+	size_t	i;
 
 	i = -1;
-	new_str = ft_strnew(len);
-	if (new_str == NULL)
+	news = malloc(sizeof(char) * len);
+	if (!news || !len || !s)
 		return (NULL);
-	while ((++i) < len)
-		*(new_str) = *(s + start + i);
-	return (new_str);
+	while (++i < len)
+		*(news + i) = *(s + start + i);
+	return (news);
 }

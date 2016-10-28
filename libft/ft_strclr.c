@@ -5,16 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 15:37:57 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 15:38:26 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 14:51:08 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 14:51:13 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 void	ft_strclr(char *s)
 {
-	int	i;
+	int		i;
 
-	i = 0;
-	while (*(s + (i++)))
-		*(s + i) = '\0';
+	if (s)
+	{
+		i = ft_strlen(s);
+		while (i >= 0)
+		{
+			s[i] = '\0';
+			i--;
+		}
+	}
 }

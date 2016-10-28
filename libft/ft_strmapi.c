@@ -5,25 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 15:50:05 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 15:50:37 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 15:11:58 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:12:00 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(const char *s, void (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char			*str;
-	unsigned int	i;
+	size_t	i;
+	char	*news;
 
-	i = 0;
-	str = ft_strnew(ft_strlen(s));
-	ft_strcpy(str, s);
-	while (*(str + i))
+	i = -1;
+	if (s && f)
 	{
-		(*f)(i, *(str + i));
-		i++;
+		news = malloc(sizeof(char) * ft_strlen(s));
+		while (*(s + (++i)) != '\0')
+			*(news + i) = f(i, *(s + i));
+		return (news);
 	}
-	return (str);
+	return (NULL);
 }

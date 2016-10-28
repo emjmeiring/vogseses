@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 16:45:39 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 16:45:41 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 12:53:36 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 12:53:39 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_putendl(char const *s)
 {
-	if (s != NULL)
-		ft_putendl_fd(s, 1);
+	ft_putstr(s);
+	ft_putchar('\n');
 }

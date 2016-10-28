@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 16:41:26 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 16:41:30 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 12:34:54 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 12:35:08 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,9 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	t_list	*new_list;
-
-	if (lst)
+	while (lst)
 	{
-		new_list = lst;
-		while (list)
-		{
-			f(list);
-			list = list->next;
-		}
+		f(lst);
+		lst = lst->next;
 	}
 }

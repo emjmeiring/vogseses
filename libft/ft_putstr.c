@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 16:54:57 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/05/15 16:55:06 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 13:00:29 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:40:56 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+void	ft_putstr(char const *str)
 {
-	if (s != NULL)
-		ft_putstr_fd(s, ft_strlen(s));
+	while (*str)
+		write(1, str++, 1);
 }
