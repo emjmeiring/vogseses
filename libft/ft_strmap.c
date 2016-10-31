@@ -22,10 +22,13 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	if (s && f)
 	{
 		j = ft_strlen((char*)s);
-		nstr = (char*)malloc(j * sizeof(char));
-		while (*(s + ++i) != '\0')
-			nstr[i] = f(*(s + i));
-		return (nstr);
+		if ((nstr = (char*)malloc(1 + j * sizeof(char))))
+		{
+			while (*(s + ++i) != '\0')
+				nstr[i] = f(*(s + i));
+			*(nstr + i) = '\0';
+			return (nstr);
+		}
 	}
 	return (NULL);
 }

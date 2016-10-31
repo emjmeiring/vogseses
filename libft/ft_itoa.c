@@ -36,7 +36,7 @@ char			*ft_itoa(int n)
 	char		*str;
 
 	lengths(n, &len, &weight);
-	str = (char *)malloc(sizeof(*str) * (len + 1));
+	str = (char *)malloc(sizeof(*str) * (len + 2));
 	if (str == NULL)
 		return (NULL);
 	cur = 0;

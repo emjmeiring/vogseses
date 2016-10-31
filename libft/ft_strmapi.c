@@ -20,10 +20,13 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = -1;
 	if (s && f)
 	{
-		news = malloc(sizeof(char) * ft_strlen(s));
-		while (*(s + (++i)) != '\0')
-			*(news + i) = f(i, *(s + i));
-		return (news);
+		if ((news = malloc(sizeof(char) * ft_strlen(s) + 1)))
+		{
+			while (*(s + (++i)) != '\0')
+				*(news + i) = f(i, *(s + i));
+			*(news + i) = '\0';
+			return (news);
+		}
 	}
 	return (NULL);
 }

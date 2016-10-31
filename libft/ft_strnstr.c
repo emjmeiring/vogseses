@@ -15,7 +15,10 @@
 char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
 	size_t	len;
+	char	seg_test;
 
+	seg_test = *s1;
+	seg_test = *s2;
 	len = ft_strlen(s2);
 	if (!*s2)
 		return ((char *)s1);

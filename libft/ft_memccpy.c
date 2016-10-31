@@ -15,8 +15,11 @@
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
 	size_t	i;
-
+	char 	seg_test;
+	
 	i = 0;
+	seg_test = *((char *)dst + n - 1);
+	seg_test = *((char *)src + n - 1);
 	if (dst && src && c && n)
 	{
 		while (i < n)
