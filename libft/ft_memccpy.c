@@ -18,8 +18,12 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	char 	seg_test;
 	
 	i = 0;
+	while (*((char *)src + i) != '\0')
+		i += 1;
 	seg_test = *((char *)dst + n - 1);
+	seg_test = *((char *)dst + i);
 	seg_test = *((char *)src + n - 1);
+	i = 0;
 	if (dst && src && c && n)
 	{
 		while (i < n)

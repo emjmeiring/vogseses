@@ -18,12 +18,14 @@ void	ft_putnbr(int n)
 	int		a[10];
 
 	i = 0;
-	if (n < 0)
+	if (n == -2147483648)
+		write(1, "-2147483648", 11);
+	else if (n < 0)
 	{
 		ft_putchar('-');
 		n = -n;
 	}
-	if (!n)
+	else if (!n)
 		ft_putchar('0');
 	while (n)
 	{
