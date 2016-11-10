@@ -6,15 +6,15 @@
 #    By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/25 11:55:33 by arnovan-          #+#    #+#              #
-#    Updated: 2016/06/09 17:16:30 by arnovan-         ###   ########.fr        #
+#    Updated: 2016/11/10 09:11:32 by jomeirin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=filler
 
-CC=gcc
+CC=gcc -g
 
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS=#-Wall -Wextra -Werror
 
 RM=rm -f
 
@@ -26,13 +26,13 @@ PATH_SRC= ./src/
 
 PATH_HD= -I includes/
 
-SRC = $(PATH_SRC)read_table.c $(PATH_SRC)filler.c $(PATH_SRC)playing.c $(PATH_SRC)find_str.c
+SRC = $(PATH_SRC)read_table.c $(PATH_SRC)filler.c $(PATH_SRC)playing.c
 
-OBJ = read_table.o filler.o playing.o find_str.o
+OBJ = read_table.o filler.o playing.o
 
 $(NAME):
 	@echo "Compiling binaries..."
-	@make re -C libft/	
+#@make re -C libft/
 	@$(CC) $(CFLAGS) $(PATH_HD) -c $(SRC)
 	@$(CC) -o $(NAME) $(OBJ) -lm $(INC_LIBFT) 
 	@echo "Compilation was successful!"
@@ -56,7 +56,7 @@ fclean:
 	@echo "Cleaning object files..."
 	@$(RM) $(OBJ)
 	@echo "Cleaning libft object & binary files..."
-	@make -C libft/ fclean
+	#@make -C libft/ fclean
 	@echo "Cleaning binaries..."
 	@$(RM) $(NAME)
 	@echo "Done cleaning!"

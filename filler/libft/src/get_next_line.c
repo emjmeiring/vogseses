@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/13 16:04:03 by qmuntada          #+#    #+#             */
-/*   Updated: 2016/06/05 11:26:42 by simzam           ###   ########.fr       */
+/*   Created: 2016/10/28 15:30:47 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/11/07 10:30:00 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,12 @@ char	*cpycat(char *s1, char *s2)
 
 	tmp = NULL;
 	if ((s1 && !s2) || (!s1 && s2))
-		return (s1 ? s1 : s2);
+	{
+		if (s1)
+			return (s1);
+		else
+			return (s2);
+	}
 	if (!s1 && !s2)
 		return (NULL);
 	tmp = ft_memalloc(ft_strlen(s1) + ft_strlen(s2));

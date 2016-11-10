@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_str.c                                         :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 10:12:37 by arnovan-          #+#    #+#             */
-/*   Updated: 2016/06/12 16:38:28 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/10/28 12:30:40 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 12:31:28 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	find_str(char *big, char *little)
+int		ft_isupper(int c)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (big[i] != '\0')
-	{
-		j = 0;
-		while (big[i] == little[j])
-		{
-			if (little[j + 1] == '\0')
-				return (1);
-			i++;
-			j++;
-		}
-		i++;
-	}
+	if (c >= 65 && c <= 90)
+		return (1);
 	return (0);
 }

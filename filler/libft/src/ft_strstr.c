@@ -3,45 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/14 09:29:58 by arnovan-          #+#    #+#             */
-/*   Updated: 2016/05/14 18:10:51 by arnovan-         ###   ########.fr       */
+/*   Created: 2016/10/28 15:21:51 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:22:57 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_find_index(char const *big, char const *little)
+char	*ft_strstr(const char *s1, const char *s2)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
-	while (big[i] != '\0')
+	j = 0;
+	if (*s2 == '\0')
+		return ((char *)s1);
+	while (s1[i])
 	{
-		j = 0;
-		while (big[i] == little[j])
+		while (s1[i] == s2[j])
 		{
-			if (little[j + 1] == '\0')
-				return (i - j);
 			i++;
 			j++;
+			if (!s2[j])
+				return (char *)s1 + (i - ft_strlen(s2));
 		}
-		i = i - j;
+		j = 0;
 		i++;
 	}
-	return (-1);
-}
-
-char		*ft_strstr(char const *big, char const *little)
-{
-	int	re;
-
-	if (little[0] == '\0')
-		return ((char *)big);
-	re = ft_find_index(big, little);
-	if (re != -1)
-		return ((char *)&(big[re]));
 	return (NULL);
 }

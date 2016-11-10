@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   filler.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jomeirin- <marvin@42.fr>                    +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:51 by jomeirin          #+#    #+#             */
-/*   Updated: 2016/06/12 16:35:21 by jomeirin         ###   ########.fr       */
+/*   Created: 2016/06/06 14:20:30 by jomeirin-          #+#    #+#            */
+/*   Updated: 2016/06/12 12:43:42 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLER_H
 # define FILLER_H
-
-# define Y_AXIS 1
-# define X_AXIS 2
 
 # include "../libft/includes/libft.h"
 # include "../libft/includes/get_next_line.h"
@@ -27,7 +24,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-
+# define X_AXIS 1
+# define Y_AXIS 2
 
 typedef struct	s_intel
 {
@@ -53,12 +51,13 @@ typedef struct	s_object_table
 	char		**data;
 	int			width;
 	int			len;
+	int			star_count;
 }				t_data;
 
 int				find_str(char *big, char *little);
-void			playing(t_data *board, t_data *piece);
+void			playing(t_data *board, t_data *piece, int to);
 int				get_next_line(const int fd, char **line);
-void 			get_player(char *line, t_data *board);
+char 			get_player(char *line);
 int				get_stream(int from, int to);
 
 #endif

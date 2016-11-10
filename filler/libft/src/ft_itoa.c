@@ -3,50 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/31 13:55:34 by arnovan-          #+#    #+#             */
-/*   Updated: 2016/05/31 13:55:44 by arnovan-         ###   ########.fr       */
+/*   Created: 2016/10/28 12:31:52 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 12:32:05 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_ilen(int n)
+static void		lengths(int n, size_t *len, int *weight)
 {
-	int	i;
-
-	i = 0;
-	if (n < 0)
-		i += 1;
-	while (n /= 10)
-		i += 1;
-	return (i + 1);
-}
-
-char		*ft_itoa(int n)
-{
-	char	*str;
-
-	if ((str = (char*)malloc(sizeof(char) * ft_ilen(n))) == NULL)
-		return (NULL);
+	*len = 1;
 	if (n >= 0)
 	{
-		while (n != 0)
-		{
-			*--str = '0' + (n % 10);
-			n /= 10;
-		}
-		return (str);
+		*len = 0;
+		n = -n;
 	}
-	else
+	*weight = 1;
+	while (n / *weight < -9)
 	{
-		while (n != 0)
-		{
-			*--str = '0' - (n % 10);
-			n /= 10;
-		}
-		*--str = '-';
+		*weight *= 10;
+		*len += 1;
 	}
+}
+
+char			*ft_itoa(int n)
+{
+	size_t		len;
+	int			weight;
+	size_t		cur;
+	char		*str;
+
+	lengths(n, &len, &weight);
+	str = (char *)malloc(sizeof(*str) * (len + 2));
+	if (str == NULL)
+		return (NULL);
+	cur = 0;
+	if (n < 0)
+	{
+		str[cur] = '-';
+		cur++;
+	}
+	if (n > 0)
+		n = -n;
+	while (weight >= 1)
+	{
+		str[cur++] = -(n / weight % 10) + 48;
+		weight /= 10;
+	}
+	str[cur] = '\0';
 	return (str);
 }

@@ -3,70 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/31 13:32:43 by arnovan-          #+#    #+#             */
-/*   Updated: 2016/05/31 13:32:48 by arnovan-         ###   ########.fr       */
+/*   Created: 2016/10/28 15:21:33 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:35:38 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_parts(char const *s, char c)
+size_t			ft_count_words(char *s, char c)
 {
-	int	substring;
-	int	cnt;
+	size_t		nb_words;
 
-	substring = 0;
-	cnt = 0;
-	while (*s != '\0')
+	while (*s && *s == c)
+		++s;
+	nb_words = (*s ? 1 : 0);
+	while (*s)
 	{
-		if (substring == 1 && *s == c)
-			substring = 0;
-		if (substring == 0 && *s != c)
-		{
-			substring = 1;
-			cnt += 1;
-		}
-		s++;
+		if (*s == c && s[1] && s[1] != c)
+			++nb_words;
+		++s;
 	}
-	return (cnt);
+	return (nb_words);
 }
 
-static int	ft_wordlen(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
-	int	len;
+	size_t		nb_words;
+	char		*wrd_begin;
+	char		**result;
 
-	len = 0;
-	while (*s != '\0' && *s != c)
-	{
-		len += 1;
-		s++;
-	}
-	return (len);
-}
-
-char		**ft_strsplit(char const *s, char c)
-{
-	char	**str;
-	int		index;
-	int		words;
-
-	index = 0;
-	words = ft_count_parts(s, c);
-	str = (char **)malloc(sizeof(*str) * words + 1);
-	if (str == NULL)
+	nb_words = ft_count_words((char *)s, c);
+	result = (char **)malloc(sizeof(char *) * (nb_words + 1));
+	if (!result)
 		return (NULL);
-	while (words--)
+	wrd_begin = (char *)s;
+	while (*s)
 	{
-		while (*s == c && *s != '\0')
-			s++;
-		str[index] = ft_strsub(s, 0, ft_wordlen(s, c));
-		if (str[index] == NULL)
-			return (NULL);
-		s = s + ft_wordlen(s, c);
-		index += 1;
+		if (*s == c)
+		{
+			if (wrd_begin != s)
+				*(result++) = ft_strsub(wrd_begin, 0, s - wrd_begin);
+			wrd_begin = (char *)s + 1;
+		}
+		++s;
 	}
-	str[index] = NULL;
-	return (str);
+	if (wrd_begin != s)
+		*(result++) = ft_strsub(wrd_begin, 0, s - wrd_begin);
+	*result = NULL;
+	return (result - nb_words);
 }

@@ -3,49 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/14 09:33:25 by arnovan-          #+#    #+#             */
-/*   Updated: 2016/05/14 18:20:46 by arnovan-         ###   ########.fr       */
+/*   Created: 2016/10/28 15:15:39 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:15:41 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_index(char const *big, char const *little, size_t length)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	int		i;
-	int		j;
-	size_t	k;
+	size_t	len;
+	char	seg_test;
 
-	i = 0;
-	k = 0;
-	while (big[i] != '\0' && k < length)
+	seg_test = *s1;
+	seg_test = *s2;
+	len = ft_strlen(s2);
+	if (!*s2)
+		return ((char *)s1);
+	if (len <= n)
 	{
-		j = 0;
-		while (big[i] == little[j] && k < length)
+		while ((*s1) && (n - len + 1 > 0))
 		{
-			if (little[j + 1] == '\0')
-				return (i - j);
-			i++;
-			j++;
-			k++;
+			if (*s1 == *s2)
+				if (ft_memcmp((char *)s1, (char *)s2, len) == 0)
+					return ((char *)s1);
+			s1++;
+			n--;
 		}
-		i = i - j;
-		i++;
-		k++;
 	}
-	return (-1);
-}
-
-char		*ft_strnstr(char const *big, char const *little, size_t length)
-{
-	int result;
-
-	if (little[0] == '\0')
-		return ((char *)big);
-	result = ft_index(big, little, length);
-	if (result != -1)
-		return ((char *)&(big[result]));
 	return (NULL);
 }

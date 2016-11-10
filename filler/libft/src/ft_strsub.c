@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnovan- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jomeirin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/14 09:43:04 by arnovan-          #+#    #+#             */
-/*   Updated: 2016/05/14 11:28:08 by arnovan-         ###   ########.fr       */
+/*   Created: 2016/10/28 15:23:15 by jomeirin          #+#    #+#             */
+/*   Updated: 2016/10/28 15:23:22 by jomeirin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,15 @@
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
+	char	*news;
 	size_t	i;
-	size_t	k;
-	size_t	str_len;
 
-	k = 0;
-	i = start;
-	str_len = ft_strlen(s);
-	if (s == NULL)
+	i = -1;
+	news = malloc(sizeof(char) * len + 1);
+	if (!news || !len || !s)
 		return (NULL);
-	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	if (i > str_len - 1)
-		return (NULL);
-	while (i < len + start && s[i] != '\0')
-	{
-		str[k] = s[i];
-		i++;
-		k++;
-	}
-	str[k] = '\0';
-	return (str);
+	while (++i < len)
+		*(news + i) = *(s + start + i);
+	*(news + i) = '\0';
+	return (news);
 }
